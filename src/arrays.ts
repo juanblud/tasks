@@ -12,14 +12,20 @@ export function bookEndList(numbers: number[]): number[] {
         return [numbers[0], numbers[0]];
     }
 
-    return [numbers[0], numbers.length - 1];
+    return [numbers[0], numbers[numbers.length - 1]];
 }
 /**
  * Consume an array of numbers, and return a new array where each
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    let newArr: number[] = [];
+
+    for (let i = 0; i < numbers.length; i++) {
+        newArr.push(numbers[i] * 3);
+    }
+
+    return newArr;
 }
 
 /**
