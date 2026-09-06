@@ -33,7 +33,19 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    let newArr: number[] = [];
+
+    for (let i = 0; i < numbers.length; i++) {
+        let parsedNumber = parseInt(numbers[i]);
+
+        if (isNaN(parsedNumber)) {
+            newArr.push(0);
+        } else {
+            newArr.push(parsedNumber);
+        }
+    }
+
+    return newArr;
 }
 
 /**
