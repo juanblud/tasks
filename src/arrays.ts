@@ -5,9 +5,15 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
-}
+    if (numbers.length === 0) {
+        return [];
+    }
+    if (numbers.length === 1) {
+        return [numbers[0], numbers[0]];
+    }
 
+    return [numbers[0], numbers.length - 1];
+}
 /**
  * Consume an array of numbers, and return a new array where each
  * number has been tripled (multiplied by 3).
