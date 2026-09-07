@@ -8,20 +8,18 @@ import { Question, QuestionType } from "./interfaces/question";
 export function makeBlankQuestion(
     id: number,
     name: string,
-    type: QuestionType
+    type: QuestionType,
 ): Question {
-    return {};
-}
-
-/**
- * Consumes a question and a potential `answer`, and returns whether or not
- * the `answer` is correct. You should check that the `answer` is equal to
- * the `expected`, ignoring capitalization and trimming any whitespace.
- *
- * HINT: Look up the `trim` and `toLowerCase` functions.
- */
-export function isCorrect(question: Question, answer: string): boolean {
-    return false;
+    return {
+        id,
+        name,
+        type,
+        body: "",
+        expected: "",
+        options: [],
+        points: 1,
+        published: false,
+    };
 }
 
 /**
@@ -31,6 +29,14 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+    if (question.type === "short_answer_question") {
+        return true;
+    }
+
+    if (question.type === "multiple_choice_question") {
+        return question.options.includes(answer);
+    }
+
     return false;
 }
 
@@ -41,7 +47,7 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    return question.id + ": " + question.name.slice(0, 10);
 }
 
 /**
@@ -62,7 +68,19 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
-    return "";
+    let result = `# ${question.name}\n${question.body}`;
+
+    if (question.type === "multiple_choice_question") {
+        const options = question.options
+            .map((option) => `- ${option}`)
+            .join("\n");
+
+        if (options.length > 0) {
+            result += `\n${options}`;
+        }
+    }
+
+    return result;
 }
 
 /**
@@ -115,7 +133,7 @@ export function mergeQuestion(
     id: number,
     name: string,
     contentQuestion: Question,
-    { points }: { points: number }
+    { points }: { points: number },
 ): Question {
     return contentQuestion;
 }
