@@ -30,6 +30,14 @@ export function isCorrect(question: Question, answer: string): boolean {
 
 /**
  * Consumes a question and a potential `answer`, and returns whether or not
+ * the `answer` is correct. You should check that the `answer` is equal to
+ * the `expected`, ignoring capitalization and trimming any whitespace.
+ *
+ * HINT: Look up the `trim` and `toLowerCase` functions.
+ */
+
+/**
+ * Consumes a question and a potential `answer`, and returns whether or not
  * the `answer` is valid (but not necessarily correct). For a `short_answer_question`,
  * any answer is valid. But for a `multiple_choice_question`, the `answer` must
  * be exactly one of the options.
