@@ -88,7 +88,7 @@ id,name,options,points,published
 export function toCSV(questions: Question[]): string {
     const csvArr = questions.map(
         (q) =>
-            `${q.id},${q.name},${q.options ? q.options.length : 0},${q.points},${q.published}`,
+            `${q.id},${q.name},${(q.options, length)},${q.points},${q.published}`,
     );
     return "id,name,options,points,published\n" + csvArr.join("\n");
 }
