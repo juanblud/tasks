@@ -5,6 +5,7 @@ export function RevealAnswer(): React.JSX.Element {
     const [visible, setVisble] = useState<boolean>(false);
     return (
         <div>
+            <p> Click to Reveal Answer</p>
             <Button
                 onClick={() => {
                     setVisble(!visible);
@@ -13,7 +14,7 @@ export function RevealAnswer(): React.JSX.Element {
                 Reveal Answer
             </Button>
 
-            {visible && <span>42</span>}
+            {visible && <p>42</p>}
         </div>
     );
 }

@@ -7,6 +7,7 @@ export function StartAttempt(): React.JSX.Element {
 
     return (
         <div>
+            <p> Start Quiz Attempt</p>
             <Button
                 onClick={() => {
                     setAttempts(attempts - 1);
