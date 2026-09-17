@@ -17,6 +17,7 @@ export function TwoDice(): React.JSX.Element {
 
     return (
         <div>
+            <p>Two Dice</p>
             <Button
                 onClick={() => {
                     setLeftDie(d6());
@@ -31,9 +32,9 @@ export function TwoDice(): React.JSX.Element {
             >
                 Roll Right
             </Button>
-            <span data-testid="left-die">{leftDie}</span>
-            <span data-testid="right-die">{rightDie}</span>
-            <br /> Two Dice
+            <p data-testid="left-die">Left Die: {leftDie}</p>
+            <p data-testid="right-die">Right Die: {rightDie}</p>
+
             {leftDie === 1 && rightDie === 1 && <p>Lose </p>}
             {leftDie === rightDie && leftDie !== 1 && <p>Win</p>}
         </div>
