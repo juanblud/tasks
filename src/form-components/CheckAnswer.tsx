@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form } from "react-bootstrap";
 
 export function CheckAnswer({
     expectedAnswer,
@@ -14,7 +15,11 @@ export function CheckAnswer({
     return (
         <div>
             <h3>Check Answer</h3>
-            <Form.Group controlId="checkAnswer"></Form.Group>
+            <Form.Group controlId="checkAnswer">
+                <Form.Label> Answer: </Form.Label>
+                <Form.Control value={response} onChange={updateResponse} />
+            </Form.Group>
+            <span>{response === expectedAnswer ? "✔️" : "❌"}</span>
         </div>
     );
 }
